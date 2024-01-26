@@ -1,7 +1,6 @@
 "use client"
 import { Avatar } from "@material-tailwind/react";
 import React from "react";
-import { MobileSidebar } from "./MobileSidebar";
 
 
 // eslint-disable-next-line @next/next/no-async-client-component
