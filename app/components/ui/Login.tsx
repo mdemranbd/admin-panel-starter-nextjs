@@ -1,78 +1,67 @@
-"use client"
-import {
-    Card,
-    Input,
-    Checkbox,
-    Button,
-    Typography,
-  } from "@material-tailwind/react";
-   
-  export function Login() {
-    return (
-      <div className="bg-gray-200 rounded p-4">
-          <Card color="transparent" shadow={false}>
-        <Typography variant="h4" color="blue-gray">
-          Sign Up
-        </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
-          Nice to meet you! Enter your details to register.
-        </Typography>
-        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-          <div className="mb-1 flex flex-col gap-6">
+"use client";
+import { Card, Button, Typography } from "@material-tailwind/react";
+import Form from "../Forms/Form";
+import FormInput from "../Forms/FormInput";
+import { SubmitHandler } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { loginUser } from "@/app/redux/slice/loginSlice";
+import Link from "next/link";
+type FormValues = {
+  email: string;
+  password: string;
+};
 
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Your Email
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Password
-            </Typography>
-            <Input
-              type="password"
-              size="lg"
-              placeholder="********"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-          </div>
-          <Checkbox
-            label={
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
-              >
-                I agree the
-                <a
-                  href="#"
-                  className="font-medium transition-colors hover:text-gray-900"
-                >
-                  &nbsp;Terms and Conditions
-                </a>
-              </Typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
-          />
-          <Button className="mt-6" fullWidth>
-            sign up
-          </Button>
-          <Typography color="gray" className="mt-4 text-center font-normal">
-            Already have an account?{" "}
-            <a href="#" className="font-medium text-gray-900">
-              Sign In
-            </a>
-          </Typography>
-        </form>
-      </Card>
+export function Login() {
+  const { email, password } = useAppSelector((state) => state.loginUser);
+  const dispatch = useAppDispatch();
+  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
+    console.log("Login Data", data);
+    dispatch(loginUser(data));
+  };
+
+  return (
+    <div className="w-[32rem]">
+      {/* heading */}
+      <div className="flex justify-between items-center">
+        <h1 className="bg-blue-200">Logo</h1>
+        <Typography variant="h5" color="blue-gray">
+          Mystrey Box
+        </Typography>
       </div>
-    );
-  }
+
+      <div className="bg-gray-200 p-4">
+        <Card className="bg-white p-4" color="transparent" shadow={false}>
+          <Form submitHandler={onSubmit}>
+            <FormInput
+              name="email"
+              type="text"
+              size="large"
+              label="Email"
+              placeholder="name@mail.com"
+            />
+
+            <FormInput
+              name="password"
+              type="password"
+              size="large"
+              label="Password"
+            />
+
+            <Button type="submit" className="mt-6 bg-blue-600" fullWidth>
+              Log in
+            </Button>
+          </Form>
+          <div>
+            <h1 className="text-center border-b-1 border-indigo-500  mt-2 text-blue-700">
+              <Link href="/forget">Forgotten password?</Link>
+            </h1>
+            <hr className="border-t-2 my-2 " />
+            <Button type="submit" className="mx-auto block mt-6 bg-green-600">
+              Create new account
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+}
