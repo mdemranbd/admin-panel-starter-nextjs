@@ -147,14 +147,14 @@ export function SuperAdmin() {
             <ChevronDownIcon
               strokeWidth={2.5}
               className={`mx-auto h-4 w-4 transition-transform ${
-                open === 1 ? "rotate-180" : ""
+                open === 3 ? "rotate-180" : ""
               }`}
             />
           }
         >
-          <ListItem className="p-0" selected={open === 2}>
+          <ListItem className="p-0" selected={open === 3}>
             <AccordionHeader
-              onClick={() => handleOpen(2)}
+              onClick={() => handleOpen(3)}
               className="border-b-0 p-3"
             >
               <ListItemPrefix>
