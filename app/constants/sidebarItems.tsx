@@ -123,13 +123,17 @@ export function SuperAdmin() {
                 <ListItemPrefix>
                   <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                 </ListItemPrefix>
-                <Link href={`/${role}/create-profile-keyword`}>Create Profile keyword</Link>
+                <Link href={`/${role}/create-profile-keyword`}>
+                  Create Profile keyword
+                </Link>
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
                   <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                 </ListItemPrefix>
-                <Link href={`/${role}/create-blog-keyword`}>Create Blog Post Keyword</Link>
+                <Link href={`/${role}/create-blog-keyword`}>
+                  Create Blog Post Keyword
+                </Link>
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
@@ -140,8 +144,8 @@ export function SuperAdmin() {
             </List>
           </AccordionBody>
         </Accordion>
-          {/* Android Application */}
-          <Accordion
+        {/* Android Application */}
+        <Accordion
           open={open === 3}
           icon={
             <ChevronDownIcon
@@ -171,24 +175,20 @@ export function SuperAdmin() {
                 <ListItemPrefix>
                   <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                 </ListItemPrefix>
-                <Link href={`/${role}/create-app-profile`}>Create Apps Profile</Link>
+                <Link href={`/${role}/create-app-profile`}>
+                  Create Apps Profile
+                </Link>
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
                   <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                 </ListItemPrefix>
-                <Link href={`/${role}/list-app-profile`}>Create Blog Post Keyword</Link>
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                <Link href={`/${role}/my-status`}>My Status</Link>
+                <Link href={`/${role}/list-app-profile`}>List Of Profile</Link>
               </ListItem>
             </List>
           </AccordionBody>
         </Accordion>
-      {/* All List Items */}
+        {/* All List Items */}
         <ListItem>
           <ListItemPrefix>
             <CircleStackIcon className="h-5 w-5" />
