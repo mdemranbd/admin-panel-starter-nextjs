@@ -5,10 +5,15 @@ import { useFormContext, Controller } from "react-hook-form";
 
 interface IInput {
   name: string;
-  type?: string;
-  size?: "large" | "small";
+  variant?: "standard" | "outlined" | "static";
+  color?:string;
+  error?:boolean;
+  type?:string;
+  success?:boolean;
+  icon?:React.ReactNode;
+  className?:string;
+  size?:  "md" | "lg";
   value?: string | number | string[] | undefined;
-  id?: string;
   placeholder?: string;
   validation?: object;
   label?: string;
@@ -18,15 +23,20 @@ interface IInput {
 
 const FormInput = ({
   name,
+  variant,
   type,
-  size = "large",
+  color,
+  success,
+  icon,
+  size = "lg",
   value,
-  id,
   placeholder,
   validation,
   disabled,
   label,
   required,
+  className,
+  error
   
 }: IInput) => {
   const {
@@ -59,18 +69,17 @@ const FormInput = ({
         render={({ field }) => (
             <Input
             {...field}
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            id={id}
+            variant ={variant}
             type={type}
-            //@ts-ignore
-            size={size}  
+            size={size} 
+            icon={icon} 
             placeholder={placeholder}
             disabled={disabled}
+            className={className}
             error={Boolean(errorMessage)}
-            helperText={errorMessage}
+            
             required={required}
+            label={label}
           />
         )}
       />

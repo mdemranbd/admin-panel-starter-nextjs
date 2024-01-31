@@ -1,17 +1,19 @@
 "use client";
-import { Card, Button, Typography } from "@material-tailwind/react";
+import { Card, Button, Typography, Input } from "@material-tailwind/react";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { loginUser } from "@/app/redux/slice/loginSlice";
 import Link from "next/link";
+import { useState } from "react";
 type FormValues = {
   email: string;
   password: string;
 };
 
 export function Login() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { email, password } = useAppSelector((state) => state.loginUser);
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
@@ -35,7 +37,6 @@ export function Login() {
             <FormInput
               name="email"
               type="text"
-              size="large"
               label="Email"
               placeholder="name@mail.com"
             />
@@ -43,7 +44,6 @@ export function Login() {
             <FormInput
               name="password"
               type="password"
-              size="large"
               label="Password"
             />
 
@@ -59,9 +59,15 @@ export function Login() {
             <Button type="submit" className="mx-auto block mt-6 bg-green-600">
               Create new account
             </Button>
+            {errorMessage && (
+                <div style={{ color: "red", marginBottom: "10px" }}>
+                  {errorMessage}
+                </div>
+              )}
           </div>
         </Card>
       </div>
+        
     </div>
   );
 }
