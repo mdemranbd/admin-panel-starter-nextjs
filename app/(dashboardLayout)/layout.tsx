@@ -1,26 +1,28 @@
-import { Sidebar } from "../components/ui/Sidebar";
 import Navbar from "../components/ui/Navbar";
+import { Sidebar } from "../components/ui/Sidebar";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Left Sidebar start */}
-      <div className="bg-[#d4dbeb] h-screen max-w-[280px] p-4 overflow-hidden">
+    <div className="h-full relative">
+      <div className="hidden p-2 bg-[#d4dcf0] h-full md:flex  md:w-72  md:flex-col md:fixed md:inset-y-0 ">
+        {/* Left Sidebar start */}
         <Sidebar />
+        {/* Left Sidebar end */}
       </div>
-      {/* Left Sidebar end */}
-
-      <div className="flex flex-col flex-1">
+      <main className="md:pl-72">
         {/* Navbar Start */}
         <Navbar />
         {/* Navbar End*/}
-
-        <div className="p-5 bg-blue-50/50 h-[calc(100vh-64px)] overflow-hidden overflow-y-auto rounded-tl-3xl shadow-inner flex-1">
+        <div
+          className="bg-blue-50/50 h-[calc(100vh-64px)] 
+          w-full h-42 overflow-y-scroll no-scrollbar p-5
+      "
+        >
           {/* Main Content  Start*/}
           {children}
           {/* Main Content  End*/}
         </div>
-      </div>
+      </main>
     </div>
   );
 };
