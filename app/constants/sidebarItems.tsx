@@ -37,7 +37,7 @@ export function SuperAdmin() {
   };
 
   return (
-    <div className="h-screen w-full max-w-[280px] p-4 overflow-hidden overflow-y-auto">
+    <div className="h-screen w-full max-w-[280px] p-4 ">
       <div className=" flex items-center justify-between gap-4 p-4">
         <Image src={logo} alt="cyberCraft logo" className="h-8 w-8" />
         <Typography variant="h6" color="blue-gray">
@@ -71,6 +71,12 @@ export function SuperAdmin() {
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
+            <ListItem>
+                <ListItemPrefix>
+                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                </ListItemPrefix>
+                <Link href={`/${role}/ai-integration`}>AI Integration</Link>
+              </ListItem>
               <ListItem>
                 <ListItemPrefix>
                   <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />

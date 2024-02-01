@@ -1,6 +1,7 @@
 "use client";
 import Form from "@/app/components/Forms/Form";
 import FormInput from "@/app/components/Forms/FormInput";
+import { CustomBreadCrumbs } from "@/app/components/ui/BreadCrumb";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { Button, Typography } from "@material-tailwind/react";
 import { useState } from "react";
@@ -13,56 +14,73 @@ const AddChatGPTPage = () => {
   const onSubmit = async (data: any) => {
     console.log("Login Data", data);
   };
+  const breadcrumbData = [
+    { label: "Home", link: "/" },
+    { label: "Category", link: "/category" },
+    { label: "Current Page", link: "/category/current" },
+  ];
   return (
     <div>
+      <CustomBreadCrumbs
+        items={[
+          {
+            label: "super_admin",
+            link: "/super_admin",
+          },
+          {
+            label: "add-chatgpt",
+            link: "/super_admin/add-chatgpt/",
+          },
+        ]}
+      />
       <h1 className="text-3xl">Android Application</h1>
       {/* Overall Form */}
       <div className="bg-gray-300 p-2 rounded">
-      <Form submitHandler={onSubmit}>
-        <div className="lg:flex items-center">
-          <h1 className="w-32 mr-2 text-xl text-l font-bold">Overview</h1>
-          <div className="flex-1">
-            <FormInput name="overview" type="text" placeholder="Overview" />
+        <Form submitHandler={onSubmit}>
+          <div className="lg:flex items-center">
+            <h1 className="w-32 mr-2 text-xl text-l font-bold">Overview</h1>
+            <div className="flex-1">
+              <FormInput name="overview" type="text" placeholder="Overview" />
+            </div>
           </div>
-        </div>
-        <div className="lg:flex items-center mt-4 lg:mt-0">
-          <h1 className="w-32 mr-2 text-l font-bold">Key Feature</h1>
-          <div className="flex-1">
-            <FormInput name="key" type="text" placeholder="Key Featured" />
+          <div className="lg:flex items-center mt-4 lg:mt-0">
+            <h1 className="w-32 mr-2 text-l font-bold">Key Feature</h1>
+            <div className="flex-1">
+              <FormInput name="key" type="text" placeholder="Key Featured" />
+            </div>
           </div>
-        </div>
-        <div className="lg:flex items-center mt-4 lg:mt-0">
-          <h1 className="w-32 mr-2 text-l font-bold">Pros</h1>
-          <div className="flex-1">
-            <FormInput name="pros" type="text" placeholder="Pros" />
+          <div className="lg:flex items-center mt-4 lg:mt-0">
+            <h1 className="w-32 mr-2 text-l font-bold">Pros</h1>
+            <div className="flex-1">
+              <FormInput name="pros" type="text" placeholder="Pros" />
+            </div>
           </div>
-        </div>
-        <div className="lg:flex items-center mt-4 lg:mt-0">
-          <h1 className="w-32 mr-2 text-l font-bold">Cons</h1>
-          <div className="flex-1">
-            <FormInput name="cons" type="text" placeholder="Cons" />
+          <div className="lg:flex items-center mt-4 lg:mt-0">
+            <h1 className="w-32 mr-2 text-l font-bold">Cons</h1>
+            <div className="flex-1">
+              <FormInput name="cons" type="text" placeholder="Cons" />
+            </div>
           </div>
-        </div>
-        <div className="lg:flex items-center mt-4 lg:mt-0">
-          <h1 className="w-32 mr-2 text-l font-bold">User Review</h1>
-          <div className="flex-1">
-            <FormInput
-              name="userReview"
-              type="text"
-              placeholder="User Review"
-            />
+          <div className="lg:flex items-center mt-4 lg:mt-0">
+            <h1 className="w-32 mr-2 text-l font-bold">User Review</h1>
+            <div className="flex-1">
+              <FormInput
+                name="userReview"
+                type="text"
+                placeholder="User Review"
+              />
+            </div>
           </div>
-        </div>
-        <div className="lg:flex items-center mt-4 lg:mt-0">
-          <h1 className="w-32 mr-2 text-l font-bold">FAQ</h1>
-          <div className="flex-1">
-            <FormInput name="faq" type="text" placeholder="FAQ" />
+          <div className="lg:flex items-center mt-4 lg:mt-0">
+            <h1 className="w-32 mr-2 text-l font-bold">FAQ</h1>
+            <div className="flex-1">
+              <FormInput name="faq" type="text" placeholder="FAQ" />
+            </div>
           </div>
-        </div>
-        <Button type="submit" className="mt-6 bg-blue-600" fullWidth>
-          Generate
-        </Button>
-      </Form>
+          <Button type="submit" className="mt-6 bg-blue-600" fullWidth>
+            Generate
+          </Button>
+        </Form>
       </div>
 
       {/* Contents Publishing */}

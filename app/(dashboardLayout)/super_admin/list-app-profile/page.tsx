@@ -43,10 +43,28 @@ const ListAppProfile = () => {
       <div className="grid grid-cols-1 ">
         <div className="border-2 border-black flex justify-between">
           <h1>Profile 1</h1>
-          <h1>6236</h1>
-          <h1>2344</h1>
-          <h1>3727</h1>
-          <h1>4839</h1>
+          <h1>
+            6236
+            <sub className="font-features subs text-red-900">
+              (Apps Profile)
+            </sub>
+          </h1>
+          <h1>
+            2344
+            <sub className="font-features subs text-red-900">(Blog Post)</sub>
+          </h1>
+          <h1>
+            3727
+            <sub className="font-features subs text-red-900">
+              (review on Profile)
+            </sub>
+          </h1>
+          <h1>
+            3727
+            <sub className="font-features subs text-red-900">
+              (review on Blog Post)
+            </sub>
+          </h1>
         </div>
         <div className="border-2 border-black">Profile 2</div>
         <div className="border-2 border-black">Profile 3</div>

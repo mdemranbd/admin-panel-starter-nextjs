@@ -1,4 +1,5 @@
 "use client";
+import { CustomBreadCrumbs } from "@/app/components/ui/BreadCrumb";
 import { Card, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
@@ -66,6 +67,18 @@ const MyStatus = () => {
   };
   return (
     <div>
+      <CustomBreadCrumbs
+        items={[
+          {
+            label: "super_admin",
+            link: "/super_admin",
+          },
+          {
+            label: "my status",
+            link: "/super_admin/my-status/",
+          },
+        ]}
+      />
       <h1 className="text-2xl font-bold  bg-gray-400 mb-2">My Daily Status</h1>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-10">
         {/* Top Pie Chart */}
