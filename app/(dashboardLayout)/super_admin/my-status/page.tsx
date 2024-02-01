@@ -1,9 +1,10 @@
 "use client";
 import { CustomBreadCrumbs } from "@/app/components/ui/BreadCrumb";
 import { Card, Typography } from "@material-tailwind/react";
-import React, { useState } from "react";
-import Chart from "react-apexcharts";
-
+import React from "react";
+// import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 const TABLE_HEAD = [
   "Date",
   "Target For Profile Keyword",
@@ -65,6 +66,7 @@ const MyStatus = () => {
     series: [73, 27],
     colors: ["#447b40", "#cc7870", "#e74ce4"],
   };
+
   return (
     <div>
       <CustomBreadCrumbs
@@ -86,25 +88,29 @@ const MyStatus = () => {
           <h1 className="text-xl font-bold mt-2 text-center">
             Profile Keywords
           </h1>
-          <Chart
-            options={chartData.options}
-            series={chartData.series}
-            type="pie"
-            width="350"
-            colors={chartData.colors}
-          />
+          {typeof window !== "undefined" && (
+            <Chart
+              options={chartData.options}
+              series={chartData.series}
+              type="pie"
+              width="350"
+              colors={chartData.colors}
+            />
+          )}
         </div>
         <div className="bg-gray-200">
           <h1 className="text-xl mb-2 font-bold mt-2 text-center">
             Blog Post Keywords
           </h1>
+          {typeof window !== "undefined" && (
             <Chart
-        options={chartData.options}
-        series={chartData.series}
-        type="pie"
-        width="350"
-        colors={chartData.colors}
-      />
+              options={chartData.options}
+              series={chartData.series}
+              type="pie"
+              width="350"
+              colors={chartData.colors}
+            />
+          )}
         </div>
       </div>
       {/* My Details Status Table */}

@@ -67,6 +67,7 @@ const FormInput = ({
         defaultValue={value}
         rules={validation}
         render={({ field }) => (
+          //@ts-ignore
             <Input
             {...field}
             variant ={variant}
