@@ -8,7 +8,6 @@ export function Sidebar() {
     [USER_ROLE.ADMIN]: <Admin />,
     [USER_ROLE.SEO_EXECUTIVE]: "",
   };
-
   return (
     <div>
       {roleComponentMap[role]}
